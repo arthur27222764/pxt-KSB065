@@ -6,8 +6,7 @@
     "dependencies": {
         "core": "*",
         "neopixel": "github:microsoft/pxt-neopixel",
-        "KSRobot_IR": "github:kaise-ksrobot/pxt-ksrobot-ir",
-        "DHT11/DHT22": "github:alankrantas/pxt-dht11_dht22"
+        "KSRobot_IR": "github:kaise-ksrobot/pxt-ksrobot-ir"
     },
     "files": [
         "main.ts",
