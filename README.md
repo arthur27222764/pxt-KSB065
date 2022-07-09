@@ -1,6 +1,6 @@
 # KSB065 Home Automation Board 家庭自動化擴展板
 
-![image](images/KSB065.png.png)
+![image](images/KSB065.png)
 
 [教學網站](https://kaise-ksrobot.github.io/docs/ch/KSB/microbit/KSB065.html) 
 
