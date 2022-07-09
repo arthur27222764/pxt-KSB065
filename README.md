@@ -2,7 +2,7 @@
 
 ![image](images/KSB065.png)
 
-##[教學網站](https://kaise-ksrobot.github.io/docs/ch/KSB/microbit/KSB065.html) 
+[教學網站](https://kaise-ksrobot.github.io/docs/ch/KSB/microbit/KSB065.html) 
 
 
 ## User Guide 
