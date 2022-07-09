@@ -1,27 +1,24 @@
 {
-    "name": "pxt-ksb065",
-    "version": "0.0.0",
-    "description": "",
+    "name": "KSB065",
+    "version": "0.1.0",
+    "description": "Extension for KAISE KSRobot KSB065 Sensor Board",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "neopixel": "github:microsoft/pxt-neopixel",
+        "KSRobot_IR": "github:kaise-ksrobot/pxt-ksrobot-ir"
     },
     "files": [
+        "main.ts",
         "README.md",
-        "main.blocks",
-        "main.ts"
+        "_locales/zh/KSB065-strings.json"
     ],
     "testFiles": [
-        "test.ts"
+        "tests.ts"
     ],
     "public": true,
-    "targetVersions": {
-        "target": "5.0.12",
-        "targetId": "microbit"
-    },
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
