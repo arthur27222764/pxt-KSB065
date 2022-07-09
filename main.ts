@@ -42,6 +42,16 @@ namespace KSB065 {
         return pins.analogReadPin(AnalogPin.P4);;
     }
 
+    /**
+    * P7
+    */
+    //% blockId=KSB065_Relay
+    //% block="Relay trig %trig"
+    //% weight=99
+    export function Relay(trig: number): void {
+
+        pins.digitalWritePin(DigitalPin.P7, trig);
+    }
 
     /**
     * P14
@@ -93,70 +103,70 @@ namespace KSB065 {
     
 
     /**
-    * P16
+    * P10
     */
     //% blockId="KSB065_RGB1" 
     //% block="RGB LED1"
     //% weight=96
     export function RGB_LED1(): neopixel.Strip {
         if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
         }
 
         return neoStrip.range(0, 1);
     }
     /**
-    * P16
+    * P10
     */
     //% blockId="KSB065_RGB2" 
     //% block="RGB LED2"
     //% weight=95
     export function RGB_LED2(): neopixel.Strip {
         if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
         }
 
         return neoStrip.range(1, 1);
     }
     /**
-    * P16
+    * P10
     */
     //% blockId="KSB065_RGB3" 
     //% block="RGB LED3"
     //% weight=94
     export function RGB_LED3(): neopixel.Strip {
         if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
         }
 
         return neoStrip.range(2, 1);
     }
     /**
-    * P16
+    * P10
     */
     //% blockId="KSB065_RGB4" 
     //% block="RGB LED4"
     //% weight=93
     export function RGB_LED4(): neopixel.Strip {
         if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
         }
 
         return neoStrip.range(3, 1);
     }
     /**
-    * P16
+    * P10
     */
     //% blockId="KSB065_RGB" 
     //% block="RGB LED Setting"
     //% weight=92
     export function RGB_LED(): neopixel.Strip {
         if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
         }
 

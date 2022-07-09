@@ -1,9 +1,10 @@
 {
 	"KSB065|block": "KSB065",
-	"KSB065.Mic|block": "麥克風",
 	"KSB065.Slider|block": "滑桿",
+	"KSB065.Light|block": "亮度",
 	"KSB065.Ultrasonic|block": "超音波測距(公分)",
 	"KSB065.Motor|block": "馬達 速度 %speed",
+	"KSB065.Relay|block": "繼電器 觸發 %trig",
 	"KSB065.RGB_LED1|block": "全彩燈1",
 	"KSB065.RGB_LED2|block": "全彩燈2",
 	"KSB065.RGB_LED3|block": "全彩燈3",
