@@ -30,6 +30,12 @@ namespace KSB065 {
     let neoStrip: neopixel.Strip;
     let initialized = false;
 
+    let _temperature: number = -999.0
+    let _humidity: number = -999.0
+    let _temptype: tempType = tempType.celsius
+    let _readSuccessful: boolean = false
+    let _sensorresponding: boolean = false
+
 
 
 
