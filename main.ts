@@ -4,10 +4,11 @@
 
 
 enum dataType {
-    //% block="humidity"
-    humidity,
     //% block="temperature"
     temperature,
+    //% block="humidity"
+    humidity,
+    
 }
 
 enum tempType {
@@ -287,8 +288,9 @@ namespace KSB065 {
         }
 
         //wait 2 sec after query if needed
+        //if (true) basic.pause(2000)
         if (true)
-            basic.pause(2000)
+            basic.pause(500)
         return data == dataType.humidity ? _humidity : _temperature
 
     }

@@ -1,6 +1,6 @@
 {
-	"dataType.humidity|block": "溫度",
-	"dataType.temperature|block": "濕度",
+	"dataType.humidity|block": "濕度",
+	"dataType.temperature|block": "溫度",
 	"KSB065|block": "KSB065",
 	"KSB065.Slider|block": "滑桿",
 	"KSB065.Light|block": "亮度",
