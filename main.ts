@@ -194,7 +194,7 @@ namespace KSB065 {
     //% blockId="KSB065_DHT11" 
     //% block="DHT11 $data"
     //% weight=99
-    export function DHT11(data: dataType) : number{
+    export function DHT11(data: dataType) : number {
 
         //initialize
         let startTime: number = 0
@@ -213,7 +213,6 @@ namespace KSB065 {
 
         let _temperature: number = -999.0
         let _humidity: number = -999.0
-        let _temptype: tempType = tempType.celsius
         let _readSuccessful: boolean = false
         
 
@@ -269,6 +268,8 @@ namespace KSB065 {
                     //DHT11
                     _humidity = resultArray[0] + resultArray[1] / 100
                     _temperature = resultArray[2] + resultArray[3] / 100
+
+                    return data == dataType.humidity ? _humidity : _temperature
                 } else {
                     //DHT22
                     let temp_sign: number = 1
@@ -278,10 +279,13 @@ namespace KSB065 {
                     }
                     _humidity = (resultArray[0] * 256 + resultArray[1]) / 10
                     _temperature = (resultArray[2] * 256 + resultArray[3]) / 10 * temp_sign
+
+                    return data == dataType.humidity ? _humidity : _temperature
                 }
-                if (_temptype == tempType.fahrenheit)
-                    _temperature = _temperature * 9 / 5 + 32
+                
             }
+
+            return data == dataType.humidity ? _humidity : _temperature
 
             
 
