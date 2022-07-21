@@ -205,7 +205,7 @@ namespace KSB065 {
         let resultArray: number[] = []
         //let DHTstr: string = (DHT == DHTtype.DHT11) ? "DHT11" : "DHT22"
          
-        DigitalPin dataPin = DigitalPin.P9
+        let dataPin = DigitalPin.P9;
 
         for (let index = 0; index < 40; index++) dataArray.push(false)
         for (let index = 0; index < 5; index++) resultArray.push(0)
