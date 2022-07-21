@@ -197,6 +197,9 @@ namespace KSB065 {
     export function DHT11(data: dataType) : number {
 
         //initialize
+        let _temperature: number = -999.0
+        let _humidity: number = -999.0
+        let _readSuccessful: boolean = false
         let startTime: number = 0
         let endTime: number = 0
         let checksum: number = 0
@@ -209,12 +212,6 @@ namespace KSB065 {
 
         for (let index = 0; index < 40; index++) dataArray.push(false)
         for (let index = 0; index < 5; index++) resultArray.push(0)
-
-
-        let _temperature: number = -999.0
-        let _humidity: number = -999.0
-        let _readSuccessful: boolean = false
-        
 
 
         startTime = input.runningTimeMicros()
@@ -269,7 +266,7 @@ namespace KSB065 {
                     _humidity = resultArray[0] + resultArray[1] / 100
                     _temperature = resultArray[2] + resultArray[3] / 100
 
-                    return data == dataType.humidity ? _humidity : _temperature
+                    
                 } else {
                     //DHT22
                     let temp_sign: number = 1
@@ -280,19 +277,19 @@ namespace KSB065 {
                     _humidity = (resultArray[0] * 256 + resultArray[1]) / 10
                     _temperature = (resultArray[2] * 256 + resultArray[3]) / 10 * temp_sign
 
-                    return data == dataType.humidity ? _humidity : _temperature
+                    
                 }
                 
             }
 
-            return data == dataType.humidity ? _humidity : _temperature
-
-            
+                       
 
         }
 
         //wait 2 sec after query if needed
-        if (true) basic.pause(2000)
+        if (true)
+            basic.pause(2000)
+        return data == dataType.humidity ? _humidity : _temperature
 
     }
 
