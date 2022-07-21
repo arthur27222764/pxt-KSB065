@@ -1,12 +1,11 @@
 {
     "name": "KSB065",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Extension for KAISE KSRobot KSB065 Board",
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "neopixel": "github:microsoft/pxt-neopixel",
-        "KSRobot_IR": "github:kaise-ksrobot/pxt-ksrobot-ir"
+        "neopixel": "github:microsoft/pxt-neopixel"
     },
     "files": [
         "main.ts",
