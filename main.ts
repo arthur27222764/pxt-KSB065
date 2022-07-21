@@ -2,12 +2,6 @@
  * KSB065 V0.010
  */
 
-enum DHTtype {
-    //% block="DHT11"
-    DHT11,
-    //% block="DHT22"
-    DHT22,
-}
 
 enum dataType {
     //% block="humidity"
@@ -30,15 +24,7 @@ namespace KSB065 {
     let neoStrip: neopixel.Strip;
     let initialized = false;
 
-    let _temperature: number = -999.0
-    let _humidity: number = -999.0
-    let _temptype: tempType = tempType.celsius
-    let _readSuccessful: boolean = false
-    let _sensorresponding: boolean = false
-
-
-
-
+    
     function init(): void {
         //pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
         //pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
@@ -203,15 +189,12 @@ namespace KSB065 {
     }
 
     /**
-    * Query data from DHT11/DHT22 sensor. If you are using 4 pins/no PCB board versions, you'll need to pull up the data pin. 
-    * It is also recommended to wait 1 (DHT11) or 2 (DHT22) seconds between each query.
+    * P9
     */
-    //% block="Query $DHT|Data pin $dataPin|Pin pull up $pullUp|Serial output $serialOtput|Wait 2 sec after query $wait"
-    //% pullUp.defl=true
-    //% serialOtput.defl=false
-    //% wait.defl=true
-    //% blockExternalInputs=true
-    export function queryData(DHT: DHTtype, dataPin: DigitalPin, pullUp: boolean, serialOtput: boolean, wait: boolean) {
+    //% blockId="KSB065_DHT11" 
+    //% block="DHT11 $data"
+    //% weight=99
+    export function DHT11(data: dataType) : number{
 
         //initialize
         let startTime: number = 0
@@ -220,34 +203,39 @@ namespace KSB065 {
         let checksumTmp: number = 0
         let dataArray: boolean[] = []
         let resultArray: number[] = []
-        let DHTstr: string = (DHT == DHTtype.DHT11) ? "DHT11" : "DHT22"
+        //let DHTstr: string = (DHT == DHTtype.DHT11) ? "DHT11" : "DHT22"
+         
+        DigitalPin dataPin = DigitalPin.P9
 
         for (let index = 0; index < 40; index++) dataArray.push(false)
         for (let index = 0; index < 5; index++) resultArray.push(0)
 
-        _humidity = -999.0
-        _temperature = -999.0
-        _readSuccessful = false
-        _sensorresponding = false
+
+        let _temperature: number = -999.0
+        let _humidity: number = -999.0
+        let _temptype: tempType = tempType.celsius
+        let _readSuccessful: boolean = false
+        
+
+
         startTime = input.runningTimeMicros()
 
         //request data
         pins.digitalWritePin(dataPin, 0) //begin protocol, pull down pin
         basic.pause(18)
         
-        if (pullUp) pins.setPull(dataPin, PinPullMode.PullUp) //pull up data pin if needed
+        //if (pullUp)
+        if (true)
+            pins.setPull(dataPin, PinPullMode.PullUp) //pull up data pin if needed
         pins.digitalReadPin(dataPin) //pull up pin
         control.waitMicros(40)
         
         if (pins.digitalReadPin(dataPin) == 1) {
-            if (serialOtput) {
-                serial.writeLine(DHTstr + " not responding!")
-                serial.writeLine("----------------------------------------")
-            }
+           
 
         } else {
 
-            _sensorresponding = true
+            
 
             while (pins.digitalReadPin(dataPin) == 0); //sensor response
             while (pins.digitalReadPin(dataPin) == 1); //sensor response
@@ -277,7 +265,7 @@ namespace KSB065 {
 
             //read data if checksum ok
             if (_readSuccessful) {
-                if (DHT == DHTtype.DHT11) {
+                if (true) {
                     //DHT11
                     _humidity = resultArray[0] + resultArray[1] / 100
                     _temperature = resultArray[2] + resultArray[3] / 100
@@ -295,59 +283,16 @@ namespace KSB065 {
                     _temperature = _temperature * 9 / 5 + 32
             }
 
-            //serial output
-            if (serialOtput) {
-                serial.writeLine(DHTstr + " query completed in " + (endTime - startTime) + " microseconds")
-                if (_readSuccessful) {
-                    serial.writeLine("Checksum ok")
-                    serial.writeLine("Humidity: " + _humidity + " %")
-                    serial.writeLine("Temperature: " + _temperature + (_temptype == tempType.celsius ? " *C" : " *F"))
-                } else {
-                    serial.writeLine("Checksum error")
-                }
-                serial.writeLine("----------------------------------------")
-            }
+            
 
         }
 
         //wait 2 sec after query if needed
-        if (wait) basic.pause(2000)
+        if (true) basic.pause(2000)
 
     }
 
 
-
-    /**
-    * Read humidity/temperature data from lastest query of DHT11/DHT22
-    */
-    //% block="Read $data"
-    export function readData(data: dataType): number {
-        return data == dataType.humidity ? _humidity : _temperature
-    }
-
-    /**
-    * Select temperature type (Celsius/Fahrenheit)"
-    */
-    //% block="Temperature type: $temp" advanced=true
-    export function selectTempType(temp: tempType) {
-        _temptype = temp
-    }
-
-    /**
-    * Determind if last query is successful (checksum ok)
-    */
-    //% block="Last query successful?"
-    export function readDataSuccessful(): boolean {
-        return _readSuccessful
-    }
-
-    /**
-    * Determind if sensor responded successfully (not disconnected, etc) in last query
-    */
-    //% block="Last query sensor responding?" advanced=true
-    export function sensorrResponding(): boolean {
-        return _sensorresponding
-    }
 
 
 
