@@ -134,7 +134,7 @@ namespace KSB065 {
     //% blockId="KSB065_RGB1" 
     //% block="RGB LED1"
     //% weight=49
-    export function RGB_LED1(): neopixel.Strip {
+    export function RGB_LED1(): neopixel.range {
 
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
@@ -149,7 +149,7 @@ namespace KSB065 {
     //% blockId="KSB065_RGB2" 
     //% block="RGB LED2"
     //% weight=48
-    export function RGB_LED2(): neopixel.Strip {
+    export function RGB_LED2(): neopixel.range {
 
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
@@ -164,7 +164,7 @@ namespace KSB065 {
     //% blockId="KSB065_RGB3" 
     //% block="RGB LED3"
     //% weight=47
-    export function RGB_LED3(): neopixel.Strip {
+    export function RGB_LED3(): neopixel.range {
 
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
@@ -179,7 +179,7 @@ namespace KSB065 {
     //% blockId="KSB065_RGB4" 
     //% block="RGB LED4"
     //% weight=46
-    export function RGB_LED4(): neopixel.Strip {
+    export function RGB_LED4(): neopixel.range {
 
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
