@@ -18,6 +18,19 @@ enum tempType {
     fahrenheit,
 }
 
+enum LedType {
+    //% block="LED1"
+    LED1,
+    //% block="LED2"
+    LED2,
+    //% block="LED3"
+    LED3,
+    //% block="LED4"
+    LED4,
+    //% block="LEDALL"
+    LEDALL,
+}
+
 
 //% weight=10 color=#00A6F0 icon="\uf085" block="KSB065"
 namespace KSB065 {
@@ -131,77 +144,34 @@ namespace KSB065 {
     /**
     * P10
     */
-    //% blockId="KSB065_RGB1" 
-    //% block="RGB LED1"
-    //% weight=49
-    export function RGB_LED1(): neopixel.Strip {
-
-        if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
-
-        }
-
-        return neoStrip.range(0, 1);
-    }
-    /**
-    * P10
-    */
-    //% blockId="KSB065_RGB2" 
-    //% block="RGB LED2"
-    //% weight=48
-    export function RGB_LED2(): neopixel.Strip {
-
-        if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
-
-        }
-
-        return neoStrip.range(1, 1);
-    }
-    /**
-    * P10
-    */
-    //% blockId="KSB065_RGB3" 
-    //% block="RGB LED3"
-    //% weight=47
-    export function RGB_LED3(): neopixel.Strip {
-
-        if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
-
-        }
-
-        return neoStrip.range(2, 1);
-    }
-    /**
-    * P10
-    */
-    //% blockId="KSB065_RGB4" 
-    //% block="RGB LED4"
-    //% weight=46
-    export function RGB_LED4(): neopixel.Strip {
-
-        if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
-
-        }
-
-        return neoStrip.range(3, 1);
-    }
-    /**
-    * P10
-    */
     //% blockId="KSB065_RGB" 
     //% block="RGB LED Setting"
     //% weight=45
-    export function RGB_LED(): neopixel.Strip {
+    export function RGB_LED(led: LedType): neopixel.Strip {
 
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
         }
+        switch (led) {
+            case LedType.LED1:
+                return neoStrip.range(0, 1);
+                break;
+            case LedType.LED2:
+                return neoStrip.range(1, 1);
+                break;
+            case LedType.LED3:
+                return neoStrip.range(2, 1);
+                break;
+            case LedType.LED4:
+                return neoStrip.range(3, 1);
+                break;
+            case LedType.LEDALL:
+                return neoStrip;
+                break;
 
-        return neoStrip;
+        }
+
     }
 
     /**

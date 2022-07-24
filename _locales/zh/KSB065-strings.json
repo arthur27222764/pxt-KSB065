@@ -1,6 +1,11 @@
 {
 	"dataType.temperature|block": "溫度",
 	"dataType.humidity|block": "濕度",
+	"LedType.LED1|block": "全彩燈1",
+	"LedType.LED2|block": "全彩燈2",
+	"LedType.LED3|block": "全彩燈3",
+	"LedType.LED4|block": "全彩燈4",
+	"LedType.LEDALL|block": "全彩燈",
 	"KSB065|block": "KSB065",
 	"KSB065.Disable_Led_Matrix|block": "感測器初始化",
 	"KSB065.Slider|block": "滑桿",
@@ -8,10 +13,6 @@
 	"KSB065.Ultrasonic|block": "超音波測距(公分)",
 	"KSB065.Motor|block": "馬達 速度 %speed",
 	"KSB065.Relay|block": "繼電器 觸發 %trig",
-	"KSB065.DHT11|block": "DHT11 $data",
-	"KSB065.RGB_LED1|block": "全彩燈1",
-	"KSB065.RGB_LED2|block": "全彩燈2",
-	"KSB065.RGB_LED3|block": "全彩燈3",
-	"KSB065.RGB_LED4|block": "全彩燈4",
-	"KSB065.RGB_LED|block": "全彩燈設定"
+	"KSB065.DHT11|block": "DHT11 $data"
+	
 }
