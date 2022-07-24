@@ -2,6 +2,7 @@
 	"dataType.temperature|block": "溫度",
 	"dataType.humidity|block": "濕度",
 	"KSB065|block": "KSB065",
+	"KSB065.Disable_Led_Matrix|block": "感測器初始化",
 	"KSB065.Slider|block": "滑桿",
 	"KSB065.Light|block": "亮度",
 	"KSB065.Ultrasonic|block": "超音波測距(公分)",
@@ -13,5 +14,4 @@
 	"KSB065.RGB_LED3|block": "全彩燈3",
 	"KSB065.RGB_LED4|block": "全彩燈4",
 	"KSB065.RGB_LED|block": "全彩燈設定"
-	
 }

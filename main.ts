@@ -29,9 +29,19 @@ namespace KSB065 {
     function init(): void {
         //pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
         //pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
+        led.enable(false)
+
 
 
         initialized = true;
+    }
+
+    
+    //% blockId=Disable_Led_Matrix
+    //% block="Sensor initialization"
+    //% weight=10
+    export function Disable_Led_Matrix(): void {
+        led.enable(false)
     }
 
 
@@ -41,7 +51,7 @@ namespace KSB065 {
     */
     //% blockId=KSB065_Slider
     //% block="Slider"
-    //% weight=99
+    //% weight=59
     export function Slider(): number {
 
         return pins.analogReadPin(AnalogPin.P1);;
@@ -52,8 +62,11 @@ namespace KSB065 {
     */
     //% blockId=KSB065_Light
     //% block="Light"
-    //% weight=99
+    //% weight=58
     export function Light(): number {
+        if (!initialized) {
+            init()
+        }
 
         return pins.analogReadPin(AnalogPin.P4);;
     }
@@ -63,8 +76,11 @@ namespace KSB065 {
     */
     //% blockId=KSB065_Relay
     //% block="Relay trig %trig"
-    //% weight=99
+    //% weight=56
     export function Relay(trig: number): void {
+        if (!initialized) {
+            init()
+        }
 
         pins.digitalWritePin(DigitalPin.P7, trig);
     }
@@ -74,7 +90,7 @@ namespace KSB065 {
     */
     //% blockId=KSB065_Ultrasonic
     //% block="Ultrasonic(cm)"
-    //% weight=98
+    //% weight=57
     export function Ultrasonic(): number {
 
         let maxCmDistance = 500
@@ -95,10 +111,10 @@ namespace KSB065 {
     /**
     * P6 P1
     */
-    //% blockId=KSB065_Motor 
+    //% blockId=KSB065_Motor
     //% block="Motor speed %speed"
-    //% weight=85
     //% speed.min=-255 speed.max=255
+    //% weight=55
     export function Motor(speed: number): void {
         if (!initialized) {
             init()
@@ -123,8 +139,12 @@ namespace KSB065 {
     */
     //% blockId="KSB065_RGB1" 
     //% block="RGB LED1"
-    //% weight=96
+    //% weight=49
     export function RGB_LED1(): neopixel.Strip {
+        if (!initialized) {
+            init()
+        }
+
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -137,8 +157,11 @@ namespace KSB065 {
     */
     //% blockId="KSB065_RGB2" 
     //% block="RGB LED2"
-    //% weight=95
+    //% weight=48
     export function RGB_LED2(): neopixel.Strip {
+        if (!initialized) {
+            init()
+        }
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -151,8 +174,11 @@ namespace KSB065 {
     */
     //% blockId="KSB065_RGB3" 
     //% block="RGB LED3"
-    //% weight=94
+    //% weight=47
     export function RGB_LED3(): neopixel.Strip {
+        if (!initialized) {
+            init()
+        }
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -165,8 +191,11 @@ namespace KSB065 {
     */
     //% blockId="KSB065_RGB4" 
     //% block="RGB LED4"
-    //% weight=93
+    //% weight=46
     export function RGB_LED4(): neopixel.Strip {
+        if (!initialized) {
+            init()
+        }
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -179,8 +208,11 @@ namespace KSB065 {
     */
     //% blockId="KSB065_RGB" 
     //% block="RGB LED Setting"
-    //% weight=92
+    //% weight=45
     export function RGB_LED(): neopixel.Strip {
+        if (!initialized) {
+            init()
+        }
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -194,8 +226,11 @@ namespace KSB065 {
     */
     //% blockId="KSB065_DHT11" 
     //% block="DHT11 $data"
-    //% weight=99
-    export function DHT11(data: dataType) : number {
+    //% weight=54
+    export function DHT11(data: dataType): number {
+        if (!initialized) {
+            init()
+        }
 
         //initialize
         let _temperature: number = -999.0
