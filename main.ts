@@ -30,6 +30,8 @@ namespace KSB065 {
         //pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
         //pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
         led.enable(false)
+        pins.digitalWritePin(DigitalPin.P7, 0);
+    }
 
 
 
@@ -42,6 +44,8 @@ namespace KSB065 {
     //% weight=10
     export function Disable_Led_Matrix(): void {
         led.enable(false)
+        pins.digitalWritePin(DigitalPin.P7, 0);
+    }
     }
 
 
