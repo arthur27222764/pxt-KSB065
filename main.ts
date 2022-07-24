@@ -8,7 +8,7 @@ enum dataType {
     temperature,
     //% block="humidity"
     humidity,
-    
+
 }
 
 enum tempType {
@@ -25,7 +25,7 @@ namespace KSB065 {
     let neoStrip: neopixel.Strip;
     let initialized = false;
 
-    
+
     function init(): void {
         //pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
         //pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
@@ -36,7 +36,7 @@ namespace KSB065 {
         initialized = true;
     }
 
-    
+
     //% blockId=Disable_Led_Matrix
     //% block="Sensor initialization"
     //% weight=10
@@ -81,8 +81,10 @@ namespace KSB065 {
         if (!initialized) {
             init()
         }
-
-        pins.digitalWritePin(DigitalPin.P7, trig);
+        if (trig)
+            pins.digitalWritePin(DigitalPin.P7, 1);
+        else
+            pins.digitalWritePin(DigitalPin.P7, 0);
     }
 
     /**
@@ -122,17 +124,17 @@ namespace KSB065 {
 
         if (speed >= 0) {
             pins.digitalWritePin(DigitalPin.P6, 1)
-            pins.analogWritePin(AnalogPin.P1, 1023-(speed*4))
-            
+            pins.analogWritePin(AnalogPin.P1, 1023 - (speed * 4))
+
         } else {
             pins.digitalWritePin(DigitalPin.P6, 0)
-            pins.analogWritePin(AnalogPin.P1, -(speed*4))
+            pins.analogWritePin(AnalogPin.P1, -(speed * 4))
         }
 
 
     }
 
-    
+
 
     /**
     * P10
@@ -243,7 +245,7 @@ namespace KSB065 {
         let dataArray: boolean[] = []
         let resultArray: number[] = []
         //let DHTstr: string = (DHT == DHTtype.DHT11) ? "DHT11" : "DHT22"
-         
+
         let dataPin = DigitalPin.P9;
 
         for (let index = 0; index < 40; index++) dataArray.push(false)
@@ -255,19 +257,19 @@ namespace KSB065 {
         //request data
         pins.digitalWritePin(dataPin, 0) //begin protocol, pull down pin
         basic.pause(18)
-        
+
         //if (pullUp)
         if (true)
             pins.setPull(dataPin, PinPullMode.PullUp) //pull up data pin if needed
         pins.digitalReadPin(dataPin) //pull up pin
         control.waitMicros(40)
-        
+
         if (pins.digitalReadPin(dataPin) == 1) {
-           
+
 
         } else {
 
-            
+
 
             while (pins.digitalReadPin(dataPin) == 0); //sensor response
             while (pins.digitalReadPin(dataPin) == 1); //sensor response
@@ -302,7 +304,7 @@ namespace KSB065 {
                     _humidity = resultArray[0] + resultArray[1] / 100
                     _temperature = resultArray[2] + resultArray[3] / 100
 
-                    
+
                 } else {
                     //DHT22
                     let temp_sign: number = 1
@@ -313,12 +315,12 @@ namespace KSB065 {
                     _humidity = (resultArray[0] * 256 + resultArray[1]) / 10
                     _temperature = (resultArray[2] * 256 + resultArray[3]) / 10 * temp_sign
 
-                    
+
                 }
-                
+
             }
 
-                       
+
 
         }
 
