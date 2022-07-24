@@ -27,23 +27,19 @@ namespace KSB065 {
 
 
     function init(): void {
-        //pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
-        //pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
-        led.enable(false)
-        pins.digitalWritePin(DigitalPin.P7, 0);
- 
+
         initialized = true;
     }
 
 
     //% blockId=Disable_Led_Matrix
     //% block="Sensor initialization"
-    //% weight=10
+    //% weight=70
     export function Disable_Led_Matrix(): void {
         led.enable(false)
         pins.digitalWritePin(DigitalPin.P7, 0);
     }
-    
+
 
 
 
@@ -65,9 +61,9 @@ namespace KSB065 {
     //% block="Light"
     //% weight=58
     export function Light(): number {
-        if (!initialized) {
+        /*if (!initialized) {
             init()
-        }
+        }*/
 
         return pins.analogReadPin(AnalogPin.P4);
     }
@@ -79,9 +75,7 @@ namespace KSB065 {
     //% block="Relay trig %trig"
     //% weight=54
     export function Relay(trig: boolean): void {
-        if (!initialized) {
-            init()
-        }
+
         if (trig)
             pins.digitalWritePin(DigitalPin.P7, 1);
         else
@@ -119,9 +113,6 @@ namespace KSB065 {
     //% speed.min=-255 speed.max=255
     //% weight=55
     export function Motor(speed: number): void {
-        if (!initialized) {
-            init()
-        }
 
         if (speed >= 0) {
             pins.digitalWritePin(DigitalPin.P6, 1)
@@ -144,9 +135,6 @@ namespace KSB065 {
     //% block="RGB LED1"
     //% weight=49
     export function RGB_LED1(): neopixel.Strip {
-        if (!initialized) {
-            init()
-        }
 
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
@@ -162,9 +150,7 @@ namespace KSB065 {
     //% block="RGB LED2"
     //% weight=48
     export function RGB_LED2(): neopixel.Strip {
-        if (!initialized) {
-            init()
-        }
+
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -179,9 +165,7 @@ namespace KSB065 {
     //% block="RGB LED3"
     //% weight=47
     export function RGB_LED3(): neopixel.Strip {
-        if (!initialized) {
-            init()
-        }
+
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -196,9 +180,7 @@ namespace KSB065 {
     //% block="RGB LED4"
     //% weight=46
     export function RGB_LED4(): neopixel.Strip {
-        if (!initialized) {
-            init()
-        }
+
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -213,9 +195,7 @@ namespace KSB065 {
     //% block="RGB LED Setting"
     //% weight=45
     export function RGB_LED(): neopixel.Strip {
-        if (!initialized) {
-            init()
-        }
+
         if (!neoStrip) {
             neoStrip = neopixel.create(DigitalPin.P10, 4, NeoPixelMode.RGB)
 
@@ -231,9 +211,6 @@ namespace KSB065 {
     //% block="DHT11 $data"
     //% weight=56
     export function DHT11(data: dataType): number {
-        if (!initialized) {
-            init()
-        }
 
         //initialize
         let _temperature: number = -999.0
