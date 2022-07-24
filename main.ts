@@ -46,7 +46,7 @@ namespace KSB065 {
         led.enable(false)
         pins.digitalWritePin(DigitalPin.P7, 0);
     }
-    }
+    
 
 
 
@@ -58,7 +58,7 @@ namespace KSB065 {
     //% weight=59
     export function Slider(): number {
 
-        return pins.analogReadPin(AnalogPin.P1);;
+        return pins.analogReadPin(AnalogPin.P1);
     }
 
     /**
@@ -72,7 +72,7 @@ namespace KSB065 {
             init()
         }
 
-        return pins.analogReadPin(AnalogPin.P4);;
+        return pins.analogReadPin(AnalogPin.P4);
     }
 
     /**
