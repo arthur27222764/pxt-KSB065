@@ -166,11 +166,12 @@ namespace KSB065 {
             case LedType.LED4:
                 return neoStrip.range(3, 1);
                 break;
-            case LedType.LEDALL:
+            case LedType.ALL:
                 return neoStrip;
                 break;
 
         }
+        return neoStrip;
 
     }
 
