@@ -31,10 +31,7 @@ namespace KSB065 {
         //pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
         led.enable(false)
         pins.digitalWritePin(DigitalPin.P7, 0);
-    }
-
-
-
+ 
         initialized = true;
     }
 
