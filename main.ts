@@ -27,8 +27,8 @@ enum LedType {
     LED3,
     //% block="LED4"
     LED4,
-    //% block="LEDALL"
-    LEDALL,
+    //% block="ALL"
+    ALL,
 }
 
 
@@ -145,7 +145,7 @@ namespace KSB065 {
     * P10
     */
     //% blockId="KSB065_RGB" 
-    //% block="RGB LED Setting"
+    //% block="RGB %led"
     //% weight=45
     export function RGB_LED(led: LedType): neopixel.Strip {
 
