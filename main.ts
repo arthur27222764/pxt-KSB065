@@ -76,8 +76,8 @@ namespace KSB065 {
     */
     //% blockId=KSB065_Relay
     //% block="Relay trig %trig"
-    //% weight=56
-    export function Relay(trig: number): void {
+    //% weight=54
+    export function Relay(trig: boolean): void {
         if (!initialized) {
             init()
         }
@@ -226,7 +226,7 @@ namespace KSB065 {
     */
     //% blockId="KSB065_DHT11" 
     //% block="DHT11 $data"
-    //% weight=54
+    //% weight=56
     export function DHT11(data: dataType): number {
         if (!initialized) {
             init()
